@@ -1,0 +1,21 @@
+﻿ -- INSTRUÇÕES SOBRE O ENTITY FRAMEWORK .NET CORE --
+
+ Instalar o Microsoft.EntityFrameworkCore.SqlServer 2.1.11
+  - Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version: 2.1.11
+
+Criar as classes de modelo, classes que vao virar tabela no banco
+   
+Criar a classe de contexto 
+  - Herdar as funcionalidades e propriedades do DbContext
+  - Criar contrutor com o parametro DbContextOptins
+  - Criar os DbSet de cada modelo
+
+Configurar a injeção de dependencia na classe Startup.cs da classe Context
+
+Criar a string de conexão com o banco no arquivo appsettings.json
+
+Não é necessario o comando Enable-Migration
+
+Add uma migração e atualizar o banco sempre que for modificado algum modelo 
+  - Add-Migration NomeMigracao
+  - Update-Database -verbose

@@ -13,10 +13,20 @@ namespace EcommerceOsorio.DAL
         {
             _context = context;
         }
-        public void Cadastrar(Produto p)
+
+        public Produto BuscarProdutoPorNome(Produto p)
         {
-            _context.Produtos.Add(p);
-            _context.SaveChanges();
+            return _context.Produtos.FirstOrDefault(x=> x.Nome.Equals(p.Nome));
+        }
+        public bool Cadastrar(Produto p)
+        {
+            if (BuscarProdutoPorNome(p) == null)
+            {
+                _context.Produtos.Add(p);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         public List<Produto> ListarProdutos()
